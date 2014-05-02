@@ -10,7 +10,7 @@
 #include <QtOpenGL/qgl.h>
 #include <QKeyEvent>
 #include <GL/GLU.h>
-#include <GL/glaux.h>
+//#include <GL/glaux.h>
 #include <GL/gl.h>
 #include <QtOpenGl/QtOpenGL>
 namespace Ui {
@@ -60,7 +60,7 @@ class MQWave : public QMainWindow
 
 public:
     explicit MQWave(QWidget *parent = 0);
-
+    Ui::MQWave *ui;
 
     ~MQWave();
     QGraphicsScene *scene;
@@ -78,7 +78,7 @@ private slots:
     void on_pushButton_2_clicked();
 
 private:
-    Ui::MQWave *ui;
+
     QList<data_Line<wave_type> > line_list;
     miaoPainter *painter;
     QHBoxLayout *widget_layout;
@@ -100,6 +100,8 @@ public:
     ~MQGl();
     GLfloat rTri;
     GLfloat rQuad;
+    GLfloat rTri1;
+    GLfloat rQuad1;
      void paintGL();
 protected:
     void initializeGL();

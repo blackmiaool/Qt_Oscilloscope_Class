@@ -30,38 +30,41 @@ void MQGl::paintGL()
     glLoadIdentity();//重置当前的模型观察矩阵？不是很理解！
 
     glTranslatef( -1.5,  0.0, -6.0 );
-//    glRotatef( rTri,  0.0,  1.0,  0.0 );
-//    glRotatef( rQuad,  1.0,  0.0,  0.0 );
-//    glBegin( GL_TRIANGLES );
-//    glColor3f( 1.0, 0.0, 0.0 );
-//    glVertex3f(  0.0,  1.0,  0.0 );
-//    glColor3f( 1.0, 0.0, 1.0 );
-//    glVertex3f( -1.0, -1.0,  0.0 );
-//    glColor3f( 0.0, 1.0, 0.0 );
-//    glVertex3f(  1.0, -1.0,  0.0 );
-//    glEnd();
-    //glLoadIdentity();
-//    glRotatef( -rQuad,  1.0,  0.0,  0.0 );
-//    glRotatef( -rTri,  0.0,  1.0,  0.0 );
-    glTranslatef(  3,  0.0, 0 );
-    glRotatef( rQuad,  1.0,  0.0,  0.0 );
-    glRotatef( rTri,  0.0,  0.0,  1.0 );
+    glRotated( rTri1,  0.0, 0,  -1.0 );
+    glRotated( rQuad1, 1,  0,0 );
+    glBegin( GL_QUADS );
+    glColor3f( 1.0, 0.0, 0.0 );
+    glVertex3f( -0.5,  1.0,  0.0 );
+    glColor3f( 1.0, 0.0, 1.0 );
+    glVertex3f(  1.0,  1.0,  0.0 );
+    glColor3f( 0.0, 1.0, 0.0 );
+    glVertex3f(  1.0, -1.0,  0.0 );
+    glColor3f( 0.0, 1.0, 0.0 );
+    glVertex3f( -0.5, -1.0,  0.0 );
+    glEnd();
+glLoadIdentity();
+
+    glTranslatef(  1.5,  0.0, -6.0  );
+    glRotated( rTri,  0.0, 0,  -1.0 );
+    glRotated( rQuad, 1,  0,0 );
+
+
     glBegin( GL_QUADS );
 
     glColor3f( 1.0, 1.0, 0.0 );
     glVertex3f( -1.0,  1.0,  0.0 );
 
     glColor3f( 0.0, 1, 0.0 );
-    glVertex3f(  1.0,  1.0,  0.0 );
+    glVertex3f(  0.5,  1.0,  0.0 );
 
     glColor3f( 0.0, 1,1 );
-    glVertex3f(  1.0, -1.0,  0.0 );
+    glVertex3f( 0.5, -1.0,  0.0 );
 
     glColor3f( 1.0, 0.0, 1 );
     glVertex3f( -1.0, -1.0,  0.0 );
 
     glEnd();
-    glRotatef( -rQuad,  1.0,  0.0,  0.0 );
+    //glRotatef( -rQuad,  1.0,  0.0,  0.0 );
     glLoadIdentity();
 
 
@@ -83,21 +86,21 @@ void MQGl::keyPressEvent(QKeyEvent *ess)
 {
     switch(ess->key())
     {
-        //F1键为全屏和普通屏显示切换键
-        case Qt::Key_F1:
-            fullscreen = !fullscreen;
-            if(fullscreen)
-                showFullScreen();
-            else
-            {
-                setGeometry(300, 150, 640, 480);
-                showNormal();
-            }
-            updateGL();
-            break;
+    //F1键为全屏和普通屏显示切换键
+    case Qt::Key_F1:
+        fullscreen = !fullscreen;
+        if(fullscreen)
+            showFullScreen();
+        else
+        {
+            setGeometry(300, 150, 640, 480);
+            showNormal();
+        }
+        updateGL();
+        break;
         //Ese为退出程序键
-        case Qt::Key_Escape:
-            close();
+    case Qt::Key_Escape:
+        close();
     }
 }
 
